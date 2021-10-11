@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <p>All About me!</p>
-    <a href="/"><button>HOME</button></a>
+    <h1>File Not Found!</h1>
 </body>
 </html>

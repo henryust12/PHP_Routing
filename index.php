@@ -1,31 +1,20 @@
 <?php
-include_once 'Request.php';
-include_once 'Router.php';
-$router = new Router(new Request);
+// Grabs the URI and breaks it apart in case we have querystring stuff
+$request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
-
-
-
-// ROUTER LIST
-$router->get('/', function() {
-  return <<<HTML
-  <h1>Hello world</h1>
-  <a href="profile"><button>PROFILE</button></a>
-  <a href="about_me"><button>ABOUT ME</button></a>
-HTML;
-});
-$router->get('/profile', function($request) {
-    include 'pages/profile.php';
-});
-
-$Query = 'about_me';
-$router->get('/'.$Query, function($request) {
-    include 'pages/about.php';
-});
-
-$router->post('/data', function($request) {
-
-  return json_encode($request->getBody());
-});
-
-?>
+// Route it up!
+switch ($request_uri[0]) {
+    // Home page
+    case '/':
+        require 'views/home.php';
+        break;
+    // About page
+    case '/about':
+        require 'views/about.php';
+        break;
+    // Everything else
+    default:
+        header('HTTP/1.0 404 Not Found');
+        require 'views/404.php';
+        break;
+}

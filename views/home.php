@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>This is Profile Page!!!</h1>
-    <a href="/"><button>HOME</button></a>
+    HOME
 </body>
 </html>
